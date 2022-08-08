@@ -2,14 +2,15 @@ package ru.lanit.page.objects;
 
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseClassForPage {
-    private static final String MAIL_URL = "https://www.dns-shop.ru/";
-    protected WebDriver driver;
+    private static final String DNS_URL = "https://www.dns-shop.ru/";
 
+    protected WebDriver driver;
     protected WebDriverWait wait;
 
     public BaseClassForPage(WebDriver driver) {
@@ -18,13 +19,19 @@ public class BaseClassForPage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(40));
     }
 
+    protected void open() {
+        driver.navigate().to(DNS_URL);
+    }
 
+    public void clickToButton(WebElement button) {
+        wait.until(ExpectedConditions.elementToBeClickable(button)).click();
+    }
 
-
-
-
-
-
+    //
+    //    @Step("Send keys '{text}' to {inputField}")
+    //    protected void fillInputField(final WebElement inputField, final String text) {
+    //        wait.until(ExpectedConditions.visibilityOf(inputField)).sendKeys(text);
+    //    }
 
     //    public void navigeTomenu()  {
     //
@@ -43,11 +50,13 @@ public class BaseClassForPage {
     //
     //    public String verifyCity() {
     //        return wait.until(ExpectedConditions.visibilityOf(city)).getText();
-    //      List<WebElement> hu= wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//div[@class=\"ui-checkbox-group ui-checkbox-group_list\"]"),6));
+    //      List<WebElement> hu= wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//div[@class=
+    //      \"ui-checkbox-group ui-checkbox-group_list\"]"),6));
     //    }
     //
     //    public void getLeftMenuElements() {
-    //        List<WebElement> memoryList = listOfMemory.stream().map(WebElement::findElement).collect(Collectors.toList());
+    //        List<WebElement> memoryList = listOfMemory.stream().map(WebElement::findElement).collect(Collectors.
+    //        oList());
     //        for (WebElement elem : memoryList) {
     //            if (elem.getText().equals("Samsung")) {
     //                elem.click();

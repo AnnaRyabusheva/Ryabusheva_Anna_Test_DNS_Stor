@@ -20,6 +20,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <aspectj.version>1.9.8</aspectj.version>
     <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+    <lombok.version>1.18.24</lombok.version>
+
+    <cucumber-java.version>7.5.0</cucumber-java.version>
   </properties>
 
   <dependencies>
@@ -51,10 +54,24 @@
     </dependency>
 
     <dependency>
-      <groupId>info.cukes</groupId>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber-java.version}</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
       <artifactId>cucumber-junit</artifactId>
-      <version>1.2.6</version>
+      <version>${cucumber-java.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>provided</scope>
     </dependency>
 
 

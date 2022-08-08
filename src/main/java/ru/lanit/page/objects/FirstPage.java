@@ -28,8 +28,6 @@ public class FirstPage extends BaseClassForPage {
     @FindBy(xpath = "//input[@placeholder=\"Поиск\"]")
     public WebElement searchButton;
 
-    @FindBy(xpath = "//span[text()=\"Производитель\"]")
-    public WebElement elemToScrollDown;
     @FindBy(xpath = "//span[text()=\"Samsung  \"]")
     public WebElement clickToChoose;
 
@@ -81,7 +79,8 @@ public class FirstPage extends BaseClassForPage {
 
     public void chooseModelOfTelefon() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        //        js.executeScript("arguments[0].scrollIntoView();", wait.until(ExpectedConditions.elementToBeClickable(elemToScrollDown)));
+        //        js.executeScript("arguments[0].scrollIntoView();", wait.until(ExpectedConditions.
+        //        elementToBeClickable(elemToScrollDown)));
         js.executeScript("window.scrollBy(0,600)");
         clickToButton(searchButton);
         wait.until(ExpectedConditions.visibilityOf(searchButton)).sendKeys("Samsung" + Keys.ENTER);
@@ -165,7 +164,8 @@ public class FirstPage extends BaseClassForPage {
 //            }
 //            assertFilterCables();
 //            clickRackFilter();
-//            rackElements = getAllElementsRackFilter(CablingElements.RACK_FILTER_LIST, CablingElements.RACK_FILTER_SELECTED);
+//            rackElements = getAllElementsRackFilter(CablingElements.RACK_FILTER_LIST, CablingElements.
+//            RACK_FILTER_SELECTED);
 
 //        JavascriptExecutor js = (JavascriptExecutor) driver;
 //        js.executeScript("window.scrollTo(0, scrollHeight)");
@@ -174,9 +174,12 @@ public class FirstPage extends BaseClassForPage {
 //        //        JavascriptExecutor js = (JavascriptExecutor) driver;
 //        //        js.executeScript("window.scrollBy(0,-600");
 //        //        Actions action = new Actions(driver);
-//        //        action.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(deshFirst))).click().moveToElement(wait.until(ExpectedConditions.elementToBeClickable(ecspensivFerst))).click().build().perform();
-//        //        List<WebElement> list = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@class=\"catalog-products view-simple\"]")));
-//        ////        wait.until(ExpectedConditions.visibilityOfAllElements((WebElement) list,"5")).listIterator(0).wait();
+//        //        action.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(deshFirst))).click().
+//        moveToElement(wait.until(ExpectedConditions.elementToBeClickable(ecspensivFerst))).click().build().perform();
+//        //        List<WebElement> list = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//
+//        div[@class=\"catalog-products view-simple\"]")));
+//        ////        wait.until(ExpectedConditions.visibilityOfAllElements((WebElement) list,"5")).listIterator(0).
+//        wait();
 //        //        list.get(6).isDisplayed();
 ///
 //
@@ -187,3 +190,4 @@ public class FirstPage extends BaseClassForPage {
 ////            System.out.println(s);
 ////            list.get(0);
 ////         }
+
