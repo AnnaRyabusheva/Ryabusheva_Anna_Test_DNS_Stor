@@ -1,4 +1,4 @@
-package ru.lanit;
+package ru.lanit.context;
 
 import java.util.HashMap;
 import java.util.Map;

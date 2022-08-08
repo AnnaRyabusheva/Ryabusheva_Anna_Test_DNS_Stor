@@ -21,8 +21,8 @@
     <aspectj.version>1.9.8</aspectj.version>
     <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     <lombok.version>1.18.24</lombok.version>
-
     <cucumber-java.version>7.5.0</cucumber-java.version>
+
   </properties>
 
   <dependencies>

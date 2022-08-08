@@ -1,6 +1,7 @@
 package ru.lanit.page.objects;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +16,7 @@ public class CardProductPage extends BaseClassForPage {
     @FindBy(xpath = "//button[contains(@class, \"product-characteristics__expand\") and text()=\"Развернуть все\"]")
     public WebElement razvernut;
 
-    @FindBy(xpath = "//div[@class=\"product-characteristics\"]")
+    @FindBy(xpath = "//div[@class=\"product-characteristics\"]//div[contains(@class,\"product-characteristics__spec\")]")
     public List<WebElement> description;
 
     public void discloseProductCharacteristics() {
@@ -26,4 +27,8 @@ public class CardProductPage extends BaseClassForPage {
         wait.until(ExpectedConditions.visibilityOfAllElements(description));
         return description.stream().map(WebElement::getText).collect(Collectors.toList());
     }
+//    public Map<String,String> collectParametersInTheListForChecking1(){
+//        wait.until(ExpectedConditions.visibilityOfAllElements(description)).stream().collect(Collectors.toMap());
+//
+//    }
 }

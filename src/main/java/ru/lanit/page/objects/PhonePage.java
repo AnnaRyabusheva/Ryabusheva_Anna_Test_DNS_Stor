@@ -1,10 +1,11 @@
 package ru.lanit.page.objects;
 
 import java.util.List;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -12,6 +13,9 @@ public class PhonePage extends BaseClassForPage {
     public PhonePage(WebDriver driver) {
         super(driver);
     }
+
+//    @FindBy(xpath = "//div[@data-id=\"brand\"]")
+//    public WebElement brandElem;
 
     @FindBy(xpath = "//input[@placeholder=\"Поиск\"]")
     public WebElement searchButtonToChooseModelOfPhone;
@@ -25,12 +29,8 @@ public class PhonePage extends BaseClassForPage {
     @FindBy(xpath = "//span[text()=\"256 ГБ  \"]")
     public WebElement paramOfMemory;
 
-    @FindBy(xpath = "//div[\"left-filters__buttons-main\"]//button[text()=\"Применить\"]")
-    public WebElement buttonToSearchForParam;
-
-    @FindBy(xpath = "//div[@class=\"products-page__helpers\"]//button[\"Пройти опрос\"]")
-    public WebElement buttonToOpros;
-    // кнопка для спуска к нужному элементу, прогнать тест, если срабатывать без нее будет то удалить
+//    @FindBy(xpath = "//div[\"left-filters__buttons-main\"]//button[text()=\"Применить\"]")
+//    public WebElement buttonToSearchForParam;
 
     @FindBy(xpath = "//span[text()=\"Сначала дорогие\"]")
     public WebElement exspensiveFerst;
@@ -38,12 +38,14 @@ public class PhonePage extends BaseClassForPage {
     @FindBy(xpath = "//a/span[text()=\"Сначала недорогие\"]")
     public WebElement deshFirst;
 
-    @FindBy(xpath = "//div[contains(@class, \"catalog-products view-simple\")]")
+    @FindBy(xpath = "//div[@data-id= \"product\"]/a[contains(@class, \"ui-link\")]")
     public List<WebElement> webElementList;
 
     public void chooseModelOfPhone() {
-        //        JavascriptExecutor js = (JavascriptExecutor) driver;
-        //        js.executeScript("window.scrollBy(0,600)");
+
+        WebElement brandElement =
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@data-id=\"brand\"]")));
+        new Actions(driver).moveToElement(brandElement).perform();
         clickToButton(searchButtonToChooseModelOfPhone);
         wait.until(ExpectedConditions.visibilityOf(searchButtonToChooseModelOfPhone)).sendKeys("Samsung" + Keys.ENTER);
     }
@@ -52,39 +54,33 @@ public class PhonePage extends BaseClassForPage {
         clickToButton(clickToChooseSamsung);
     }
 
-    public void clickToListOfMemory() throws InterruptedException {
-        Thread.sleep(6000);
+    public void clickToListOfMemory() {
+
         clickToButton(listOfMemory);
         clickToButton(paramOfMemory);
     }
 
     public void clickToButtonToSearchForParam() {
-        //        wait.until(ExpectedConditions.visibilityOf(orintFold));
-        //        wait.until(ExpectedConditions.visibilityOf(buttonToOpros));
-        wait.until(ExpectedConditions.elementToBeClickable(buttonToSearchForParam)).click();
-        //        clickToButton(buttonToSearchForParam);
+        WebElement choose = wait.until(ExpectedConditions.presenceOfElementLocated(
+            By.xpath("//div[\"left-filters__buttons-main\"]//button[text()=\"Применить\"]")));
+
+        new Actions(driver).moveToElement(choose).perform();
+        clickToButton(choose);
     }
 
-    public void clickToButtonToChangePrise() throws InterruptedException {
-        //        wait.until(ExpectedConditions.textToBePresentInElementValue(headerSmar,"Производитель: Samsung"));
-        //        JavascriptExecutor js = (JavascriptExecutor) driver;
-        //        js.executeScript("arguments[0].scrollIntoView();",deshFirst );
-        Thread.sleep(6000);
+    public void clickToButtonToChangePrise() {
+        WebElement header =
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class=\"receipts__inner\"]")));
+        new Actions(driver).moveToElement(header).perform();
+
         clickToButton(deshFirst);
         clickToButton(exspensiveFerst);
     }
 
-    public void clickToPhoneCardInListOfItems() throws InterruptedException {
-        Thread.sleep(6000);
-        List<WebElement> list = wait.until(ExpectedConditions.visibilityOfAllElements(webElementList));
-        list.get(0).click();
+    public void clickToPhoneCardInListOfItems() {
 
-        for (WebElement webElement : list) {
-            webElement.getSize().getWidth();
-            if (webElement.isDisplayed()) {
-                list.get(0).click();
-            }
-            //            list.get(0).click();
-        }
+        List<WebElement> list = wait.until(ExpectedConditions.visibilityOfAllElements(webElementList));
+
+        clickToButton(list.get(0));
     }
 }

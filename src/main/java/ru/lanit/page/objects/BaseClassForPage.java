@@ -27,41 +27,7 @@ public class BaseClassForPage {
         wait.until(ExpectedConditions.elementToBeClickable(button)).click();
     }
 
-    //
-    //    @Step("Send keys '{text}' to {inputField}")
-    //    protected void fillInputField(final WebElement inputField, final String text) {
-    //        wait.until(ExpectedConditions.visibilityOf(inputField)).sendKeys(text);
-    //    }
 
-    //    public void navigeTomenu()  {
-    //
-    //        WebElement we = wait.until(ExpectedConditions.visibilityOf(leftSideBar));
-    //        WebElement smart = wait.until(ExpectedConditions.visibilityOf(menu));
-    //        WebElement dalshe = wait.until(ExpectedConditions.visibilityOf(cnopkaMenuPervay));
-    //        wait.until(ExpectedConditions.stalenessOf(leftSideBar));
-    //        Actions action = new Actions(driver);
-    //
-    //        action.moveToElement(we).moveToElement(smart).moveToElement(dalshe).click().build().perform();
-    //    }
-
-    //    public void clickToButton(WebElement button) {
-    //        wait.until(ExpectedConditions.elementToBeClickable(button)).click();
-    //    }
-    //
-    //    public String verifyCity() {
-    //        return wait.until(ExpectedConditions.visibilityOf(city)).getText();
-    //      List<WebElement> hu= wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//div[@class=
-    //      \"ui-checkbox-group ui-checkbox-group_list\"]"),6));
-    //    }
-    //
-    //    public void getLeftMenuElements() {
-    //        List<WebElement> memoryList = listOfMemory.stream().map(WebElement::findElement).collect(Collectors.
-    //        oList());
-    //        for (WebElement elem : memoryList) {
-    //            if (elem.getText().equals("Samsung")) {
-    //                elem.click();
-    //                break;
-    //            }
 
     //    Кейс
     //1. Открыть сайт https://www.dns-shop.ru/
