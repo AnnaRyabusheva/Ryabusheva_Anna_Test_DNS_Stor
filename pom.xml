@@ -23,6 +23,8 @@
     <lombok.version>1.18.24</lombok.version>
     <cucumber-java.version>7.5.0</cucumber-java.version>
 
+    <allure-cucumber7-jvm.version>2.18.1</allure-cucumber7-jvm.version>
+    <allure-maven.version>2.11.2</allure-maven.version>
   </properties>
 
   <dependencies>
@@ -74,6 +76,12 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-cucumber7-jvm</artifactId>
+      <version>${allure-cucumber7-jvm.version}</version>
+    </dependency>
+
 
   </dependencies>
 
@@ -117,12 +125,10 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven-surefire-plugin.version}</version>
         <configuration>
-          <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+          <argLine>
+            -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+            -Dcucumber.options="--plugin io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"
           </argLine>
-          <suiteXmlFiles>
-            <!--suppress UnresolvedMavenProperty -->
-            <suiteXmlFile>${suite.xml.name}</suiteXmlFile>
-          </suiteXmlFiles>
         </configuration>
         <dependencies>
           <dependency>
@@ -134,4 +140,15 @@
       </plugin>
     </plugins>
   </build>
+  <reporting>
+    <excludeDefaults>true</excludeDefaults>
+    <plugins>
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure-maven.version}</version>
+      </plugin>
+
+    </plugins>
+  </reporting>
 </project>
