@@ -69,12 +69,12 @@
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>${lombok.version}</version>
-      <scope>provided</scope>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.projectlombok</groupId>-->
+<!--      <artifactId>lombok</artifactId>-->
+<!--      <version>${lombok.version}</version>-->
+<!--      <scope>provided</scope>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>io.qameta.allure</groupId>
@@ -147,6 +147,10 @@
         <groupId>io.qameta.allure</groupId>
         <artifactId>allure-maven</artifactId>
         <version>${allure-maven.version}</version>
+        <configuration>
+          <reportVersion>${allure-cucumber7-jvm.version}</reportVersion>
+
+        </configuration>
       </plugin>
 
     </plugins>

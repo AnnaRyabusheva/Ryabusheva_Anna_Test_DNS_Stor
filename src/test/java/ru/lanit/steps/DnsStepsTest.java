@@ -38,33 +38,37 @@ public class DnsStepsTest {
         chooseCategory.navigateToMobil();
     }
 
-    @When("I filter catalog for samsung and 256 ГБ inner memory")
-    public void filerToModeAndMemoryOfPhone() throws InterruptedException {
+    @When("I filter catalog for {string} and {string} of {string} memory")
+    public void filerToModeAndMemoryOfPhone(String brand,String capacity,String memoryType)  {
         phonePage.chooseModelOfPhone();
-        phonePage.clickToChooseModel();
-        phonePage.clickToListOfMemory();
+        phonePage.clickToChooseModel(brand);
+        phonePage.clickToListOfMemory(memoryType,capacity);
         phonePage.clickToButtonToSearchForParam();
     }
 
     @When("I sort result of my choose to expensive first")
-    public void selectSortFirstExpensiv() throws InterruptedException {
+    public void selectSortFirstExpensiv()  {
         phonePage.clickToButtonToChangePrise();
     }
 
     @When("I click to first card in phone's list")
-    public void clickToFirstProductCardInListCardsAfterFilter() throws InterruptedException {
+    public void clickToFirstProductCardInListCardsAfterFilter()  {
         phonePage.clickToPhoneCardInListOfItems();
     }
 
-    @Then("in charateristice in phone card I see what model Of phone is samsung and memory is 256 ГБ")
-    public void checkingPhoneParametersIinTheProductCard() {
-
-        cardPage.discloseProductCharacteristics();
-        cardPage.collectParametersInTheListForChecking();
-        System.out.println(cardPage.collectParametersInTheListForChecking());
+    @Then("in characteristics in phone card I see what model Of phone is {string} and {string} is {string}")
+    public void checkingPhoneParametersIinTheProductCard(String brand,String memoryType, String capacity ) {
         SoftAssertions softy = new SoftAssertions();
-        softy.assertThat(cardPage.collectParametersInTheListForChecking())
-             .contains("Samsung Galaxy S22 Ultra", "256 ГБ");
+        cardPage.discloseProductCharacteristics();
+        String itemBrand =cardPage.readProductCharacteristic("Модель");
+        String itemMemory =cardPage.readProductCharacteristic(memoryType);
+        softy.assertThat(itemBrand).contains(brand);
+        softy.assertThat(itemMemory).contains(capacity);
+//        cardPage.collectParametersInTheListForChecking();
+//        System.out.println(cardPage.collectParametersInTheListForChecking());
+
+//        softy.assertThat(cardPage.collectParametersInTheListForChecking())
+//             .contains(brand,memoryType,capacity);
         softy.assertAll();
     }
 }
