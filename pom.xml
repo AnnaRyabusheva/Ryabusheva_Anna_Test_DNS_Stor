@@ -11,6 +11,7 @@
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
+    <project.source.encoding>UTF-8</project.source.encoding>
     <junit-jupiter-api.version>5.9.0</junit-jupiter-api.version>
     <webdrivermanager.version>5.2.2</webdrivermanager.version>
     <assertj-core.version>3.23.1</assertj-core.version>
@@ -22,6 +23,10 @@
     <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     <lombok.version>1.18.24</lombok.version>
     <cucumber-java.version>7.5.0</cucumber-java.version>
+
+    <!-- Plugins -->
+    <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+    <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
 
     <allure-cucumber7-jvm.version>2.18.1</allure-cucumber7-jvm.version>
     <allure-maven.version>2.11.2</allure-maven.version>
@@ -87,6 +92,28 @@
 
   <build>
     <plugins>
+
+          <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <encoding>${project.source.encoding}</encoding>
+          <!--          <source>${project.java}</source>
+                    <target>${project.java}</target>
+                    <release>${project.java}</release>-->
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>${maven-resources-plugin.version}</version>
+        <configuration>
+          <encoding>${project.source.encoding}</encoding>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>

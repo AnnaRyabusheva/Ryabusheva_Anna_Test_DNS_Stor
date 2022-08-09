@@ -13,7 +13,8 @@ public class PhonePage extends BaseClassForPage {
     public PhonePage(WebDriver driver) {
         super(driver);
     }
-    public static final String FILTER_TYPE_LOCATOR= "//span[contains(text(), \"%s\")]";
+
+    public static final String FILTER_TYPE_LOCATOR = "//span[contains(text(), \"%s\")]";
     //    @FindBy(xpath = "//div[@data-id=\"brand\"]")
     //    public WebElement brandElem;
 
@@ -23,8 +24,8 @@ public class PhonePage extends BaseClassForPage {
     @FindBy(xpath = "//span[text()=\"Samsung  \"]")
     public WebElement clickToChooseSamsung;
 
-//    @FindBy(xpath = "//span[text()=\"256 ГБ  \"]")
-//    public WebElement paramOfMemory;
+    //    @FindBy(xpath = "//span[text()=\"256 ГБ  \"]")
+    //    public WebElement paramOfMemory;
 
     //    @FindBy(xpath = "//div[\"left-filters__buttons-main\"]//button[text()=\"Применить\"]")
     //    public WebElement buttonToSearchForParam;
@@ -42,7 +43,7 @@ public class PhonePage extends BaseClassForPage {
     public WebElement productListContent;
 
     public void chooseModelOfPhone() {
-//        String brand
+        //        String brand
         WebElement brandElement =
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@data-id=\"brand\"]")));
         new Actions(driver).moveToElement(brandElement).perform();
@@ -52,17 +53,17 @@ public class PhonePage extends BaseClassForPage {
     }
 
     public void clickToChooseModel(String chooseModel) {
-        String phoneModel= String.format(FILTER_TYPE_LOCATOR,  chooseModel);
+        String phoneModel = String.format(FILTER_TYPE_LOCATOR, chooseModel);
         clickToButton(driver.findElement(By.xpath(phoneModel)));
     }
 
     public void clickToListOfMemory(String filterName, String value) {
-        String memoryType= String.format(FILTER_TYPE_LOCATOR,  filterName);
+        String memoryType = String.format(FILTER_TYPE_LOCATOR, filterName);
         clickToButton(driver.findElement(By.xpath(memoryType)));
 
-        String capacity =String.format(FILTER_TYPE_LOCATOR, value);
+        String capacity = String.format(FILTER_TYPE_LOCATOR, value);
         clickToButton(driver.findElement(By.xpath(capacity)));
-    }//paramOfMemory
+    }
 
     public void clickToButtonToSearchForParam() {
         WebElement choose = wait.until(ExpectedConditions.presenceOfElementLocated(
@@ -83,7 +84,7 @@ public class PhonePage extends BaseClassForPage {
     }
 
     public void clickToPhoneCardInListOfItems() {
-        wait.until(ExpectedConditions.attributeToBe(productListContent, "style",""));
+        wait.until(ExpectedConditions.attributeToBe(productListContent, "style", ""));
         WebElement el = wait.until(ExpectedConditions.elementToBeClickable(webElementList.get(0)));
 
         clickToButton(el);

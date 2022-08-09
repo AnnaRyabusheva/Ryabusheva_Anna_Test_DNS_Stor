@@ -10,8 +10,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CardProductPage extends BaseClassForPage {
-    private static final String CHARACTERISTIC_ITEM="//div[contains(@class, \"product-characteristics__spec\")]"
+    private static final String CHARACTERISTIC_ITEM = "//div[contains(@class, \"product-characteristics__spec\")]"
         + "/div[text()=\" %s \"]//following-sibling::div[contains(@class, \"product-characteristics__spec-value\") ]";
+
     public CardProductPage(WebDriver driver) {
         super(driver);
     }
@@ -27,11 +28,11 @@ public class CardProductPage extends BaseClassForPage {
         clickToButton(razvernut);
     }
 
-    public String readProductCharacteristic(String name){
-        String itemCard= String.format(CHARACTERISTIC_ITEM,name);
+    public String readProductCharacteristic(String name) {
+        String itemCard = String.format(CHARACTERISTIC_ITEM, name);
         return driver.findElement(By.xpath(itemCard)).getText();
-
     }
+
     public List<String> collectParametersInTheListForChecking() {
         wait.until(ExpectedConditions.visibilityOfAllElements(description));
         return description.stream().map(WebElement::getText).collect(Collectors.toList());
