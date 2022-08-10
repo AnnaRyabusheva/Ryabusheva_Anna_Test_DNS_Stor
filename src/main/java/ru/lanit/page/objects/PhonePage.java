@@ -20,13 +20,13 @@ public class PhonePage extends BaseClassForPage {
     public WebElement searchButtonToChooseModelOfPhone;
 
     @FindBy(xpath = "//span[text()=\"Сначала дорогие\"]")
-    public WebElement exspensiveFerst;
+    public WebElement expensiveFirst;
 
     @FindBy(xpath = "//a/span[text()=\"Сначала недорогие\"]")
-    public WebElement deshFirst;
+    public WebElement cheapFirst;
 
     @FindBy(xpath = "//div[@data-id= \"product\"]/a[contains(@class, \"ui-link\")]")
-    public List<WebElement> webElementList;
+    public List<WebElement> listOfPhoneAfterSort;
 
     @FindBy(xpath = "//div[@class=\"products-list__content\"]")
     public WebElement productListContent;
@@ -50,32 +50,33 @@ public class PhonePage extends BaseClassForPage {
         String memoryType = String.format(FILTER_TYPE_LOCATOR, filterName);
         clickToButton(driver.findElement(By.xpath(memoryType)));
 
-        String capacity = String.format(FILTER_TYPE_LOCATOR, value);
-        clickToButton(driver.findElement(By.xpath(capacity)));
+        String capacityMemory = String.format(FILTER_TYPE_LOCATOR, value);
+        clickToButton(driver.findElement(By.xpath(capacityMemory)));
     }
 
     public void clickToButtonToSearchForParam() {
-        WebElement choose = wait.until(ExpectedConditions.presenceOfElementLocated(
+        WebElement chooseSort = wait.until(ExpectedConditions.presenceOfElementLocated(
             By.xpath("//div[\"left-filters__buttons-main\"]//button[text()=\"Применить\"]")));
 
-        new Actions(driver).moveToElement(choose).perform();
-        clickToButton(choose);
+        new Actions(driver).moveToElement(chooseSort).perform();
+        clickToButton(chooseSort);
     }
 
     public void clickToButtonToChangePrise() {
 
-        WebElement header =
+        WebElement headerElementToMoveUp =
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class=\"receipts__inner\"]")));
-        new Actions(driver).moveToElement(header).perform();
+        new Actions(driver).moveToElement(headerElementToMoveUp).perform();
 
-        clickToButton(deshFirst);
-        clickToButton(exspensiveFerst);
+        clickToButton(cheapFirst);
+        clickToButton(expensiveFirst);
     }
 
     public void clickToPhoneCardInListOfItems() {
         wait.until(ExpectedConditions.attributeToBe(productListContent, "style", ""));
-        WebElement el = wait.until(ExpectedConditions.elementToBeClickable(webElementList.get(0)));
+        WebElement elementOfPhoneAfterSort = wait.until(ExpectedConditions.elementToBeClickable(listOfPhoneAfterSort
+            .get(0)));
 
-        clickToButton(el);
+        clickToButton(elementOfPhoneAfterSort);
     }
 }

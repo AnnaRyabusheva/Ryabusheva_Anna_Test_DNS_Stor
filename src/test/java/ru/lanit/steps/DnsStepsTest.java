@@ -3,6 +3,7 @@ package ru.lanit.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Description;
 import io.qameta.allure.Feature;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
@@ -26,18 +27,18 @@ public class DnsStepsTest {
         this.cardPage = new CardProductPage(driver);
     }
 
-    @Feature("Открыть сайт https://www.dns-shop.ru/")
+    @Description("Открыть сайт https://www.dns-shop.ru/")
     @Given("I open DNS website")
     public void openPage() {
         mainPage.openMainPage();
     }
 
-    @Feature("Перейти в раздел Смартфоны")
+    @Description("Перейти в раздел Смартфоны")
     @When("I choose mobil phone category")
     public void chooseCategoryItems() {
 
         mainPage.navigateToMobil();
-        chooseCategory.navigateToMobil();
+        chooseCategory.navigateToMobilPhone();
     }
 
     @When("I filter catalog for {string} and {string} of {string} memory")
@@ -49,7 +50,7 @@ public class DnsStepsTest {
     }
 
     @When("I sort result of my choose to expensive first")
-    public void selectSortFirstExpensiv() {
+    public void selectSortFirstExpensive() {
         phonePage.clickToButtonToChangePrise();
     }
 

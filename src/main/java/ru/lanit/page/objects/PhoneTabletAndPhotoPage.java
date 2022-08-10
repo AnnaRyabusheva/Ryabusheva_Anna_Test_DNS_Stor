@@ -13,7 +13,7 @@ public class PhoneTabletAndPhotoPage extends BaseClassForPage {
     @FindBy(xpath = "//div/a[contains(@class, \"popular-categories__title\") and text()=\"Смартфоны\"]")
     public WebElement buttonToSelectPhone;
 
-    public void navigateToMobil() {
+    public void navigateToMobilPhone() {
         clickToButton(buttonToSelectPhone);
     }
 }

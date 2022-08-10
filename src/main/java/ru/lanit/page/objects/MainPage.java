@@ -14,13 +14,13 @@ public class MainPage extends BaseClassForPage {
     }
 
     @FindBy(xpath = "//a[text()=\"Смартфоны и гаджеты\"]")
-    public WebElement buttonSmartfon;
+    public WebElement buttonSmartphone;
 
     public void openMainPage() {
         driver.navigate().to(DNS_URL);
     }
 
     public void navigateToMobil() {
-        clickToButton(buttonSmartfon);
+        clickToButton(buttonSmartphone);
     }
 }

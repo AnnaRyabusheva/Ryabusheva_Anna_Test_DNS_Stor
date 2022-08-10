@@ -25,7 +25,7 @@ public class WebDriverHook {
     }
 
     @AfterStep
-    public void addScrinShot() {
+    public void addScreenshot() {
         Allure.addAttachment("Результат шага", new ByteArrayInputStream(((TakesScreenshot) driver)
             .getScreenshotAs(OutputType.BYTES)));
     }
