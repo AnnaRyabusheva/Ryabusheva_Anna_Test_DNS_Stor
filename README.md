@@ -9,4 +9,4 @@ mvn clean test
 mvn site
 
 Результаты прогона тестов смотрим в браузере:
-открыть файл allure-maven.html с помощью браузера
+открыть файл target/site/allure-maven.html с помощью браузера
