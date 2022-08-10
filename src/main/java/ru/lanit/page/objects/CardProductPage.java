@@ -1,7 +1,6 @@
 package ru.lanit.page.objects;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -32,13 +31,4 @@ public class CardProductPage extends BaseClassForPage {
         String itemCard = String.format(CHARACTERISTIC_ITEM, name);
         return driver.findElement(By.xpath(itemCard)).getText();
     }
-
-    public List<String> collectParametersInTheListForChecking() {
-        wait.until(ExpectedConditions.visibilityOfAllElements(description));
-        return description.stream().map(WebElement::getText).collect(Collectors.toList());
-    }
-    //    public Map<String,String> collectParametersInTheListForChecking1(){
-    //        wait.until(ExpectedConditions.visibilityOfAllElements(description)).stream().collect(Collectors.toMap());
-    //
-    //    }
 }

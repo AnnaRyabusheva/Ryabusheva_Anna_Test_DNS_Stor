@@ -3,6 +3,7 @@ package ru.lanit.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.qameta.allure.Feature;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebDriver;
 import ru.lanit.context.TestContext;
@@ -25,11 +26,13 @@ public class DnsStepsTest {
         this.cardPage = new CardProductPage(driver);
     }
 
+    @Feature("Открыть сайт https://www.dns-shop.ru/")
     @Given("I open DNS website")
     public void openPage() {
         mainPage.openMainPage();
     }
 
+    @Feature("Перейти в раздел Смартфоны")
     @When("I choose mobil phone category")
     public void chooseCategoryItems() {
 
@@ -38,8 +41,8 @@ public class DnsStepsTest {
     }
 
     @When("I filter catalog for {string} and {string} of {string} memory")
-    public void filerToModeAndMemoryOfPhone(String brand, String capacity, String memoryType) {
-        phonePage.chooseModelOfPhone();
+    public void filerToModeAndMemoryOfPhone(String brand, String memoryType, String capacity) {
+        phonePage.chooseModelOfPhone(brand);
         phonePage.clickToChooseModel(brand);
         phonePage.clickToListOfMemory(memoryType, capacity);
         phonePage.clickToButtonToSearchForParam();
@@ -63,11 +66,6 @@ public class DnsStepsTest {
         String itemMemory = cardPage.readProductCharacteristic(memoryType);
         softy.assertThat(itemBrand).contains(brand);
         softy.assertThat(itemMemory).contains(capacity);
-        //        cardPage.collectParametersInTheListForChecking();
-        //        System.out.println(cardPage.collectParametersInTheListForChecking());
-
-        //        softy.assertThat(cardPage.collectParametersInTheListForChecking())
-        //             .contains(brand,memoryType,capacity);
         softy.assertAll();
     }
 }

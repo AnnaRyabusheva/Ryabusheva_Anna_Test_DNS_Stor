@@ -15,20 +15,9 @@ public class PhonePage extends BaseClassForPage {
     }
 
     public static final String FILTER_TYPE_LOCATOR = "//span[contains(text(), \"%s\")]";
-    //    @FindBy(xpath = "//div[@data-id=\"brand\"]")
-    //    public WebElement brandElem;
 
     @FindBy(xpath = "//input[@placeholder=\"Поиск\"]")
     public WebElement searchButtonToChooseModelOfPhone;
-
-    @FindBy(xpath = "//span[text()=\"Samsung  \"]")
-    public WebElement clickToChooseSamsung;
-
-    //    @FindBy(xpath = "//span[text()=\"256 ГБ  \"]")
-    //    public WebElement paramOfMemory;
-
-    //    @FindBy(xpath = "//div[\"left-filters__buttons-main\"]//button[text()=\"Применить\"]")
-    //    public WebElement buttonToSearchForParam;
 
     @FindBy(xpath = "//span[text()=\"Сначала дорогие\"]")
     public WebElement exspensiveFerst;
@@ -42,14 +31,14 @@ public class PhonePage extends BaseClassForPage {
     @FindBy(xpath = "//div[@class=\"products-list__content\"]")
     public WebElement productListContent;
 
-    public void chooseModelOfPhone() {
-        //        String brand
+    public void chooseModelOfPhone(String brand) {
+
         WebElement brandElement =
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@data-id=\"brand\"]")));
         new Actions(driver).moveToElement(brandElement).perform();
         clickToButton(searchButtonToChooseModelOfPhone);
         wait.until(ExpectedConditions.visibilityOf(searchButtonToChooseModelOfPhone))
-            .sendKeys("Samsung" + Keys.ENTER);
+            .sendKeys(brand + Keys.ENTER);
     }
 
     public void clickToChooseModel(String chooseModel) {

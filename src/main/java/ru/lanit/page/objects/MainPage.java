@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MainPage extends BaseClassForPage {
-    //    BaseClassForPage basePage = new BaseClassForPage(driver);
+
     private static final String DNS_URL = "https://www.dns-shop.ru/";
 
     public MainPage(WebDriver driver) {
